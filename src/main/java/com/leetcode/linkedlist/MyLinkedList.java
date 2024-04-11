@@ -1,114 +1,87 @@
 package com.leetcode.linkedlist;
+class MyLinkedList {
 
-public class MyLinkedList {
+	MyListNode left;
+	MyListNode right;
 
-	MyLinkedList head;
-	MyLinkedList tail;
-	int val;
-	MyLinkedList next;
-	MyLinkedList prev;
-
-	MyLinkedList(){
+	public MyLinkedList() {
+		left = new MyListNode(0);
+		right = new MyListNode(0);
+		left.next = right;
+		right.prev = left;
 	}
 
-
 	public int get(int index) {
-		var cur = this.head;
-		for (int i = 0; i <= index; i++) {
-			if(cur == null)
-				return -1;
-			if(i == index)
-				return cur.val;
+		MyListNode cur = left.next;
+		while(cur != null && index > 0) {
 			cur = cur.next;
+			index -= 1;
+		}
+		if(cur != null && cur != right && index == 0) {
+			return cur.val;
 		}
 		return -1;
 	}
 
 	public void addAtHead(int val) {
-		var newHead = new MyLinkedList();
-		newHead.val = val;
-		if(head == null){
-			head = newHead;
-			tail = newHead;
-		}
-		else{
-			newHead.next = this.head;
-			this.head.prev = newHead;
-			head = newHead;
-		}
+		MyListNode node = new MyListNode(val);
+		MyListNode next = left.next;
+		MyListNode prev = left;
+		prev.next = node;
+		next.prev = node;
+		node.next = next;
+		node.prev = prev;
 	}
 
 	public void addAtTail(int val) {
-		var newTail = new MyLinkedList();
-		newTail.val = val;
-		if(tail == null){
-			head = newTail;
-		}else{
-			newTail.prev = tail;
-			this.tail.next = newTail;
-		}
-		tail = newTail;
+		MyListNode node = new MyListNode(val);
+		MyListNode next = right;
+		MyListNode prev = right.prev;
+		prev.next = node;
+		next.prev = node;
+		node.next = next;
+		node.prev = prev;
 	}
 
 	public void addAtIndex(int index, int val) {
-		var newNode = new MyLinkedList();
-		newNode.val = val;
-		if (head == null){
-			head = newNode;
-			tail = newNode;
-			return;
+		MyListNode cur = left.next;
+		while(cur != null && index > 0) {
+			cur = cur.next;
+			index -= 1;
 		}
-		if (index == 0){
-			newNode.next = head;
-			head.prev = newNode;
-			head = newNode;
-		}
-		else {
-			var cur = this.head;
-			for (int i = 0; i <= index; i++) {
-				if( cur != null && cur.next == null && i + 1 == index){
-					addAtTail(val);
-					i++;
-					break;
-				}
-				else if(i == index && cur != null){
-					newNode.prev = cur.prev;
-					newNode.next = cur;
-					newNode.prev.next = newNode;
-					newNode.next.prev = newNode;
-					break;
-				}
-				cur = cur.next;
-			}
+		if(cur != null && index == 0) {
+			MyListNode node = new MyListNode(val);
+			MyListNode next = cur;
+			MyListNode prev = cur.prev;
+			prev.next = node;
+			next.prev = node;
+			node.next = next;
+			node.prev = prev;
 		}
 	}
 
 	public void deleteAtIndex(int index) {
-		var cur = this.head;
-		for (int i = 0; i <= index; i++) {
-			if(0 == index){
-				this.head = head.next;
-				return;
-			}else if(i == index && cur != null){
-				if(cur.next != null)
-					cur.next.prev = cur.prev;
-				if (cur.prev != null)
-					cur.prev.next = cur.next;
-				break;
-			}
-			if(cur != null)
-				cur = cur.next;
+		MyListNode cur = left.next;
+		while(cur != null && index > 0) {
+			cur = cur.next;
+			index -= 1;
+		}
+		if(cur != null && cur != right && index == 0) {
+			MyListNode next = cur.next;
+			MyListNode prev = cur.prev;
+			next.prev = prev;
+			prev.next = next;
 		}
 	}
+}
 
-	public static void main(String[] args) {
-		var test = new MyLinkedList();
-
-		test.addAtIndex(0, 10);
-		test.addAtIndex(0, 20);
-		test.addAtIndex(1, 30);
-
-		System.out.println(test.get(0));
-
+class MyListNode {
+	int val;
+	MyListNode prev;
+	MyListNode next;
+	public MyListNode(int val) {
+		this.val = val;
+		this.prev = null;
+		this.next = null;
 	}
 }
