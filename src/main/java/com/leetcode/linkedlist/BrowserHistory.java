@@ -11,32 +11,21 @@ class BrowserHistory {
 
 	public void visit(String url) {
 		var page = new Node(url);
-		page.prev = currentPage;
 		currentPage.next = page;
-		this.currentPage = this.currentPage.next;
+		page.prev = currentPage;
+
+		currentPage = page;
 	}
 
 	public String back(int steps) {
-		var cur = this.currentPage;
-		for (int i = steps; i > 0; i--) {
-			if(cur.prev == null)
-				break;
-			cur = cur.prev;
-		}
-		this.currentPage = cur;
-
+		while (currentPage.prev != null && steps-- > 0)
+			currentPage = currentPage.prev;
 		return currentPage.page;
 	}
 
 	public String forward(int steps) {
-
-		var cur = this.currentPage;
-		for (int i = 0; i < steps; i++) {
-			if(cur.next == null)
-				break;
-			cur = cur.next;
-		}
-		this.currentPage = cur;
+		while (currentPage.next != null && steps-- > 0)
+			currentPage = currentPage.next;
 		return currentPage.page;
 	}
 }
