@@ -10,25 +10,23 @@ public class BaseballGame {
 		int count = 0;
 		for (String operation : operations) {
 			switch (operation) {
-				case "C":
-					count--;
-					break;
-				case "D":
+				case "C" -> count--;
+				case "D" -> {
 					points[count] = 2 * points[count - 1];
 					count++;
-					break;
-				case "+":
+				}
+				case "+" -> {
 					points[count] = points[count - 1] + points[count - 2];
 					count++;
-					break;
-				default:
+				}
+				default ->{
 					points[count] = Integer.parseInt(operation);
 					count++;
+				}
 			}
 		}
 		int sum = 0;
-		count--;
-		for (int i = count; i >= 0 ; i--) {
+		for (int i = --count; i >= 0 ; i--) {
 			sum += points[i];
 		}
 		return sum;
