@@ -26,19 +26,19 @@ public class QuickSort {
 
 	private static int partition(int[] array, int start, int end){
 		int pivot = array[end];
-		int i = start - 1;
+		int i = start;
 		for (int j = start; j < end; j++) {
 			if(array[j] < pivot){
+				swap(array, i, j);
 				i++;
-				int temp = array[i];
-				array[i] = array[j];
-				array[j] = temp;
 			}
 		}
-		i++;
-		int temp = array[i];
-		array[i] = array[end];
-		array[end] = temp;
+		swap(array, i, end);
 		return i;
+	}
+	private static void swap(int[] nums, int a, int b) {
+		int temp = nums[a];
+		nums[a] = nums[b];
+		nums[b] = temp;
 	}
 }
