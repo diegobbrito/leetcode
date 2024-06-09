@@ -5,28 +5,19 @@ import java.util.Stack;
 public class BaseballGame {
 
 //	https://leetcode.com/problems/baseball-game/
-	public static int calPoints(String[] operations) {
+	public int calPoints(String[] operations) {
 		int[] points = new int[operations.length];
-		int count = 0;
+		int index = 0;
 		for (String operation : operations) {
 			switch (operation) {
-				case "C" -> count--;
-				case "D" -> {
-					points[count] = 2 * points[count - 1];
-					count++;
-				}
-				case "+" -> {
-					points[count] = points[count - 1] + points[count - 2];
-					count++;
-				}
-				default ->{
-					points[count] = Integer.parseInt(operation);
-					count++;
-				}
+				case "C" -> index--;
+				case "D" -> points[index] = 2 * points[index++ - 1];
+				case "+" -> points[index] = points[index - 1] + points[index++ - 2];
+				default -> points[index++] = Integer.parseInt(operation);
 			}
 		}
 		int sum = 0;
-		for (int i = --count; i >= 0 ; i--) {
+		for (int i = --index; i >= 0 ; i--) {
 			sum += points[i];
 		}
 		return sum;
