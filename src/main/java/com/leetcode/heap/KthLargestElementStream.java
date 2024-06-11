@@ -10,6 +10,8 @@ class KthLargest {
 // For this solution, its use the Priority Queue
 // Since the problem only want the Kth greater element, we only add this amount of number in the queue
 //	That make the algorithm fast
+// Time complexity: O((n+m)∗log(k)) where m is the number of calls to the add method
+// Space complexity: O(k)
 */
 	PriorityQueue<Integer> heap;
 	int element;
