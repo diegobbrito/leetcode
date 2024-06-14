@@ -13,7 +13,7 @@ public class MergeSort {
 
 	private static void mergeSort(int[] array) {
 		int length = array.length;
-		if(length <= 1 ) return;
+		if(length < 2 ) return;
 
 		var middle = length / 2;
 		int[] leftArray = new int[middle];
@@ -37,35 +37,21 @@ public class MergeSort {
 	}
 
 	private static void merge(int[] leftArray, int[] rightArray, int[] array) {
-		int leftSize = array.length / 2;
-		int rightSize = array.length - leftSize;
-		int i = 0;
-		int l = 0;
-		int r = 0;
+		int leftSize = leftArray.length;
+		int rightSize = rightArray.length;
+		int index = 0, leftIndex = 0, rightIndex = 0;
 
-		while (l < leftSize && r < rightSize){
-			if ( leftArray[l] < rightArray[r]){
-				array[i] = leftArray[l];
-				i++;
-				l++;
-			}else{
-				array[i] = rightArray[r];
-				i++;
-				r++;
-			}
-
+		while (leftIndex < leftSize && rightIndex < rightSize){
+			if (leftArray[leftIndex] < rightArray[rightIndex])
+				array[index++] = leftArray[leftIndex++];
+			else
+				array[index++] = rightArray[rightIndex++];
 		}
 
-		while(l < leftSize){
-			array[i] = leftArray[l];
-			l++;
-			i++;
-		}
+		while(leftIndex < leftSize)
+			array[index++] = leftArray[leftIndex++];
 
-		while(r < rightSize){
-			array[i] = rightArray[r];
-			r++;
-			i++;
-		}
+		while(rightIndex < rightSize)
+			array[index++] = rightArray[rightIndex++];
 	}
 }
