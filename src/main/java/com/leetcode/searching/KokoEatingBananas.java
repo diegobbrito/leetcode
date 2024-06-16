@@ -1,18 +1,31 @@
 package com.leetcode.searching;
 
 public class KokoEatingBananas {
-//	https://leetcode.com/problems/koko-eating-bananas/description/
+//	https://leetcode.com/problems/koko-eating-bananas/
 	public int minEatingSpeed(int[] piles, int h) {
-		if(piles.length == 1) return piles[0] / h;
-		int k = 0;
-		if(h == piles.length){
-			int max = 0;
-			for (int i = 1; i < piles.length; i++) {
-				if(piles[i] > piles[max])
-					max = i;
+		int left = 1;
+		int right = getMaxValue(piles); //Get the Max value the monkey can eat in an hour
+		while (left <= right){
+			int middle = left + (right - left) / 2;
+			int hoursSpent = 0;
+			for (int pile : piles) {
+				hoursSpent += pile / middle;
+				if(pile % middle != 0) hoursSpent++;
 			}
-			return piles[max];
+			if (hoursSpent <= h  && hoursSpent > 0){
+				right = middle -1;
+			} else if (hoursSpent > h || hoursSpent < 0) {
+				left = middle + 1;
+			}
 		}
-		return k;
+		return left;
+	}
+
+	private int getMaxValue(int[] piles) {
+		int max = 0;
+		for (int pile : piles)
+			if(pile > max)
+				max = pile;
+		return max;
 	}
 }
