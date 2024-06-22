@@ -1,8 +1,6 @@
 package com.leetcode.backtracing;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class Subsets {
 //	https://leetcode.com/problems/subsets/
@@ -13,20 +11,23 @@ public class Subsets {
 	}
 	public static List<List<Integer>> subsets(int[] nums) {
 		List<List<Integer>> response =  new ArrayList<>();
-		response.add(List.of());
-		List<Integer> aux = new ArrayList<>();
-		rootToLeaf(nums, 0, aux, response);
+		Stack<Integer> subSet = new Stack<>();
+		dfs(nums, 0, subSet, response);
 		return response;
 	}
 
-	private static void rootToLeaf(int[] nums, int i, List<Integer> aux, List<List<Integer>> response) {
-		if(nums.length == 0 || i >= nums.length) return;
-		aux.add(nums[i]);
-		response.add(List.of(nums[i]));
-		response.add(List.copyOf(aux));
+	private static void dfs(int[] nums, int i, Stack<Integer> subset, List<List<Integer>> response) {
+		if(i >= nums.length) {
+			response.add(List.copyOf(subset));
+			return;
+		}
 
-		i++;
-		rootToLeaf(nums, i, aux, response);
+		// add the element and start the  recursive call
+		subset.add(nums[i]);
+		dfs(nums, i + 1, subset, response);
+		// remove the element and do the backtracking call.
+		subset.pop();
+		dfs(nums, i + 1, subset, response);
 	}
 
 }
