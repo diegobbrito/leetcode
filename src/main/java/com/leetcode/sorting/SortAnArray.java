@@ -104,17 +104,16 @@ public class SortAnArray {
 	}
 
 	private static int partition(int[] array, int start, int end) {
-		int i = start - 1;
+		int i = start;
 		int pivot = array[end];
 		for (int j = start; j <= end; j++) {
 			if(array[j] < pivot){
-				i++;
 				var temp = array[j];
 				array[j] = array[i];
 				array[i] = temp;
+				i++;
 			}
 		}
-		i++;
 		var temp = array[end];
 		array[end] = array[i];
 		array[i] = temp;
