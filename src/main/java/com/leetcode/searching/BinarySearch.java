@@ -4,7 +4,7 @@ public class BinarySearch {
 //	https://leetcode.com/problems/binary-search/description/
 
 // Time complexity O(log(n))
-//	Memory complecity O(1)
+//	Memory complexity O(1)
 	public int search(int[] nums, int target) {
 		int left = 0;
 		int right = nums.length - 1;
