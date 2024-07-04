@@ -21,51 +21,19 @@ public class ValidSudoku {
     }
 
     public static boolean isValidSudoku(char[][] board) {
+        Set<String> set = new HashSet<>();
         for (int i = 0; i < 9; i++) {
-            Set<Character> set = new HashSet<>();
             for (int j = 0; j < 9; j++) {
-                if (board[i][j] != '.') {
-                    var check = set.add(board[i][j]);
-                    if (!check) return false;
-                }
-            }
-            set = new HashSet<>();
-            for (int j = 0; j < 9; j++) {
-                if (board[j][i] != '.') {
-                    var check = set.add(board[j][i]);
-                    if (!check) return false;
-                }
-            }
-        }
-
-        if (!helper(board, 0, 3, 0, 3)) return false;
-        if (!helper(board, 3, 6, 0, 3)) return false;
-        if (!helper(board, 6, 9, 0, 3)) return false;
-
-        if (!helper(board, 0, 3, 3, 6)) return false;
-        if (!helper(board, 3, 6, 3, 6)) return false;
-        if (!helper(board, 6, 9, 3, 6)) return false;
-
-        if (!helper(board, 0, 3, 6, 9)) return false;
-        if (!helper(board, 3, 6, 6, 9)) return false;
-        if (!helper(board, 6, 9, 6, 9)) return false;
-
-
-        return true;
-    }
-
-    static boolean helper(char[][] board, int a, int b, int c, int d) {
-        Set<Character> set = new HashSet<>();
-        for (int i = a; i < b; i++) {
-            for (int j = c; j < d; j++) {
-                if (board[i][j] != '.') {
-                    var check = set.add(board[i][j]);
-                    if (!check) return false;
+                char n = board[i][j];
+                if (n != '.') {
+                    if (!set.add("Row " + n + i) ||
+                            !set.add("Column " + n + j) ||
+                            !set.add("Block " + n + i / 3 + j / 3))
+                        return false;
                 }
             }
         }
         return true;
     }
 
-    ;
 }
