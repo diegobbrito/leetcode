@@ -31,6 +31,7 @@ public class LongestConsecutiveSequence {
                 }
                 longest = Math.max(longest, length);// Validate if the current sequence if the longest found in the array
             }
+            if (longest > nums.length / 2) break; //Check if the longest sequence is more than half size of the array
         }
         return longest;
     }
