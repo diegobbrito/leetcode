@@ -1,63 +1,38 @@
 package com.leetcode.arrays;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class LongestConsecutiveSequence {
-    //    https://leetcode.com/problems/longest-consecutive-sequence/description/
+    //    https://leetcode.com/problems/longest-consecutive-sequence/
     public static void main(String[] args) {
         System.out.println(longestConsecutive(new int[]{1, 2, 0, 1}));
     }
 
+    // Time complexity O(n)
+    // Memory complexity O(n) - because the extra Set
     public static int longestConsecutive(int[] nums) {
-        if (nums == null || nums.length == 0) return 0;
-        mergeSort(nums);
-        int result = 1;
-        int aux = 1;
-        for (int i = 0; i < nums.length - 1; i++) {
-            if (nums[i] + 1 == nums[i + 1]) {
-                result++;
-            } else if (nums[i] == nums[i + 1]) {
-                continue;
-            } else {
-                aux = result > aux ? result : aux;
-                result = 1;
+        Set<Integer> set = new HashSet<>(); //Create a set to have only unique numbers of the array
+        for (int num : nums)
+            set.add(num);
+
+        int longest = 0;// Started the longest variable at 0, if array is empty
+
+        for (int num : nums) {
+            // Validate for every number in the array if it has a left number in the set
+            // If it doesn't, the number is the initial number of a sequence
+            if (!set.contains(num - 1)) {
+                // Start the size of the sequence at 1
+                int length = 1;
+
+                // Check with the while loop if the set contains the next number in the sequence num + length
+                while (set.contains(num + length)) {
+                    length++;
+                }
+                longest = Math.max(longest, length);// Validate if the current sequence if the longest found in the array
             }
         }
-        return result > aux ? result : aux;
+        return longest;
     }
 
-    private static void mergeSort(int[] nums) {
-        int length = nums.length;
-        if (length < 2) return;
-
-        int middle = length / 2;
-        int[] leftArray = new int[middle];
-        int[] rightArray = new int[length - middle];
-        for (int i = 0; i < middle; i++) {
-            leftArray[i] = nums[i];
-        }
-        for (int i = middle; i < length; i++) {
-            rightArray[i - middle] = nums[i];
-        }
-        mergeSort(leftArray);
-        mergeSort(rightArray);
-        merge(nums, leftArray, rightArray);
-
-    }
-
-    private static void merge(int[] nums, int[] leftArray, int[] rightArray) {
-        int i = 0, left = 0, right = 0;
-        int leftSize = leftArray.length, rightSize = rightArray.length;
-        while (left < leftSize && right < rightSize) {
-            if (leftArray[left] < rightArray[right]) {
-                nums[i++] = leftArray[left++];
-            } else {
-                nums[i++] = rightArray[right++];
-            }
-        }
-        while (left < leftSize) {
-            nums[i++] = leftArray[left++];
-        }
-        while (right < rightSize) {
-            nums[i++] = rightArray[right++];
-        }
-    }
 }
