@@ -11,13 +11,10 @@ public class EvaluateReversePolishNotation {
         for (String token : tokens) {
             switch (token) {
                 case "*" -> stack.push(stack.pop() * stack.pop());
+                case "+" -> stack.push(stack.pop() + stack.pop());
                 case "-" -> {
                     var temp = stack.pop();
                     stack.push(stack.pop() - temp);
-                }
-                case "+" -> {
-                    var temp = stack.pop();
-                    stack.push(stack.pop() + temp);
                 }
                 case "/" -> {
                     var temp = stack.pop();
