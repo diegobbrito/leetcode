@@ -33,10 +33,10 @@ public class MissingNumber {
     }
 
     //    5 ^ 0 = 0
-//    5 ^ 5 = 0
-//    4 ^ 5 = 5 ^ 4
-//    We will xor each number present in the nums to itself.
-//    Then will xor it with every number present in the range [0,n].
+    //    5 ^ 5 = 0
+    //    4 ^ 5 = 5 ^ 4
+    //    We will xor each number present in the nums to itself.
+    //    Then will xor it with every number present in the range [0,n].
     public static int missingNumber3(int[] nums) {
         int responseXor = 0;
         for (int num : nums) responseXor ^= num;
