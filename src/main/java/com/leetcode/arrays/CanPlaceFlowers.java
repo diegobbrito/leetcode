@@ -34,11 +34,9 @@ public class CanPlaceFlowers {
             if (flowerbed[i + 1] == 0) {
                 n--;
                 before = 1;
-                i++;
-            } else {
+            } else
                 before = flowerbed[i];
-                i++;
-            }
+            i++;
         }
         return n == 0;
     }
@@ -53,18 +51,16 @@ public class CanPlaceFlowers {
         // Loop through the flowerbed until we have no more flowers to plant or reach the end
         while (n > 0 && i < size) {
             // If current spot is occupied, skip it and the next one
-            if (flowerbed[i] == 1) {
+            if (flowerbed[i] == 1)
                 i += 2;
-            }
             // If current spot and the next one are both empty, plant a flower
             else if (i == size - 1 || flowerbed[i + 1] == 0) {
                 n--; // Plant a flower
                 i += 2; // Move two spots forward
             }
             // If the next spot is occupied, just skip this spot
-            else {
+            else
                 i++;
-            }
         }
 
         // If we have planted all flowers, return true, otherwise return false
