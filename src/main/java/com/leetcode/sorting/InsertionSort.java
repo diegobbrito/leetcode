@@ -11,8 +11,9 @@ public class InsertionSort {
 		}
 	}
 
+	// Save a current value, then move all the element bigger than current value to right
 	private static void insertionSort(int[] array) {
-		for (int i = 1; i < array.length; i++) {
+		for (int i = 1, length = array.length; i < length; i++) {
 			var current = array[i];
 			int j = i - 1;
 			while (j >= 0 && array[j] > current){
