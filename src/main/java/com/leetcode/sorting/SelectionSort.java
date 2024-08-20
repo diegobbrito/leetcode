@@ -10,6 +10,7 @@ public class SelectionSort {
 		}
 	}
 
+	//This algorithm iterates throw all element searching the minimum element, then swapping this element to the left
 	private static void selectionSort(int[] array) {
 		for (int i = 0; i < array.length; i++){
 			int minIndex = i;
