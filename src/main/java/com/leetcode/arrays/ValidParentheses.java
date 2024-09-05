@@ -7,13 +7,14 @@ public class ValidParentheses {
 	public static void main(String[] args) {
 		System.out.println(isValid("(){}}{"));
 	}
+//		https://leetcode.com/problems/valid-parentheses/
+
+//    Time complexity O(n)
+//    Space Complexity O(n)
 	public static boolean isValid(String s) {
-
-//		https://leetcode.com/problems/valid-parentheses/submissions/1220612692/
-
 		Stack<Character> stack = new Stack<>();
-
-		for (int i = 0; i < s.length(); i++) {
+		int size = s.length();
+		for (int i = 0; i < size; i++) {
 			var letter = s.charAt(i);
 			switch (letter){
 				case '{', '[', '(' -> stack.push(letter);
