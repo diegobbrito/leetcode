@@ -3,6 +3,8 @@ package com.leetcode.linkedlist;
 public class MergeTwoSortedLists {
 
 //	https://leetcode.com/problems/merge-two-sorted-lists/
+//    Time Complexity O(n)
+//    Space Complexity O(1)
 	public static ListNode mergeTwoLists(ListNode list1, ListNode list2) {
 		ListNode cur = new ListNode();
 		var response = cur;
@@ -20,17 +22,19 @@ public class MergeTwoSortedLists {
 		return cur.next;
 	}
 
-//	public static ListNode mergeTwoLists(ListNode l1, ListNode l2){
-//		if(l1 == null) return l2;
-//		if(l2 == null) return l1;
-//		if(l1.val < l2.val){
-//			l1.next = mergeTwoLists(l1.next, l2);
-//			return l1;
-//		} else{
-//			l2.next = mergeTwoLists(l1, l2.next);
-//			return l2;
-//		}
-//	}
+//    Time Complexity O(n)
+//    Space Complexity O(n)
+	public static ListNode mergeTwoLists2(ListNode l1, ListNode l2){
+		if(l1 == null) return l2;
+		if(l2 == null) return l1;
+		if(l1.val < l2.val){
+			l1.next = mergeTwoLists2(l1.next, l2);
+			return l1;
+		} else{
+			l2.next = mergeTwoLists2(l1, l2.next);
+			return l2;
+		}
+	}
 
 	public static void main(String[] args) {
 		var list1 = new ListNode(1);
