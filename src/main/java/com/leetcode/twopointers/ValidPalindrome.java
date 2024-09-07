@@ -43,4 +43,29 @@ public class ValidPalindrome {
                 (character < 'A' || character > 'Z') &&
                 (character < '0' || character > '9');
     }
+
+    //    Time Complexity O(n)
+//    Space Complexity O(1)
+    public boolean isPalindrome3(String s) {
+        int left = 0, right = s.length() - 1;
+        while (left < right) {
+            if (!validCharacter(s.charAt(left))) {
+                left++;
+                continue;
+            }
+            if (!validCharacter(s.charAt(right))) {
+                right--;
+                continue;
+            }
+            if (Character.toLowerCase(s.charAt(left++)) != Character.toLowerCase(s.charAt(right--)))
+                return false;
+        }
+        return true;
+    }
+
+    private boolean validCharacter(char value) {
+        return (value >= 'a' && value <= 'z') ||
+                (value >= 'A' && value <= 'Z') ||
+                (value >= '0' && value <= '9');
+    }
 }
