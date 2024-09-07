@@ -2,6 +2,8 @@ package com.leetcode.trees;
 
 public class InvertBinaryTree {
     //    https://leetcode.com/problems/invert-binary-tree/
+//    Time Complexity O(n)
+//    Space Complexity O(n)
     public TreeNode invertTree(TreeNode root) {
         if (root == null) return null; // base case
         var temp = root.left; // create a temporarily variable to swap the values
@@ -12,6 +14,8 @@ public class InvertBinaryTree {
         return root;
     }
 
+    //    Time Complexity O(n)
+//    Space Complexity O(n)
     public TreeNode invertTree2(TreeNode root) {
         if (root == null) return null;
         TreeNode node = new TreeNode(root.val);
