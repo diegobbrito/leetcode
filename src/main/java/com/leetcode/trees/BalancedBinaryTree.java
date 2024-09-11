@@ -47,4 +47,38 @@ public class BalancedBinaryTree {
         return Math.max(leftHeight, rightHeight) + 1;
     }
 
+    //Time Complexity
+//The improved time complexity is O(n), where n is the number of nodes in the tree.
+// This is because each node is visited exactly once.
+//Space Complexity
+//The space complexity remains O(h), where h is the height of the tree,
+// due to the recursion stack. In the worst case, this can be O(n) (if the tree is completely unbalanced),
+// or O(log n) (if the tree is balanced).
+    public boolean isBalanced2(TreeNode root) {
+        // Start the helper function and check the balanced status from the result
+        return checkBalance(root) != -1;
+    }
+
+    private int checkBalance(TreeNode root) {
+        // If the node is null, its height is 0, and it is balanced
+        if (root == null) return 0;
+
+        // Recursively check the left subtree
+        int leftHeight = checkBalance(root.left);
+        // If left subtree is unbalanced, propagate -1 upwards
+        if (leftHeight == -1) return -1;
+
+        // Recursively check the right subtree
+        int rightHeight = checkBalance(root.right);
+        // If right subtree is unbalanced, propagate -1 upwards
+        if (rightHeight == -1) return -1;
+
+        // Check if the current node is balanced
+        if (Math.abs(leftHeight - rightHeight) > 1) return -1;
+
+        // Return the height of the current node
+        return Math.max(leftHeight, rightHeight) + 1;
+    }
+
+
 }
