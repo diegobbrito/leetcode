@@ -1,8 +1,10 @@
 package com.leetcode.heap;
 
+import java.util.Comparator;
 import java.util.PriorityQueue;
 
 public class KClosestPointsOrigin {
+    //    https://leetcode.com/problems/k-closest-points-to-origin/
     public static void main(String[] args) {
         var test = kClosest(new int[][]{{1, 3}, {-2, 2}, {2, -2}}, 2);
         System.out.println(test[0][0]);
@@ -12,11 +14,7 @@ public class KClosestPointsOrigin {
     public static int[][] kClosest(int[][] points, int k) {
         //Use a min heap and add the values using the formula and return the top k values
         //We can completely ignore the square root as we are just comparing the values (if a*a>b*b => a>b)
-        PriorityQueue<int[]> heap = new PriorityQueue<>((a, b) ->
-                Integer.compare(
-                        (a[0] * a[0] + a[1] * a[1]),
-                        (b[0] * b[0] + b[1] * b[1])
-                )
+        PriorityQueue<int[]> heap = new PriorityQueue<>(Comparator.comparingInt(a -> (a[0] * a[0] + a[1] * a[1]))
         );
 
         for (int[] point : points)
