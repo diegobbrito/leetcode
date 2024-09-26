@@ -21,10 +21,8 @@ public class CloneGraph {
     public Node cloneGraph(Node node) {
         // If the input node is null, return null (base case for an empty graph)
         if (node == null) return null;
-
         // Create a HashMap to store original nodes and their corresponding cloned nodes
         Map<Node, Node> map = new HashMap<>();
-
         // Start DFS traversal from the input node to clone the graph
         return dfs(node, map);
     }
@@ -33,21 +31,32 @@ public class CloneGraph {
     private Node dfs(Node node, Map<Node, Node> map) {
         // If the node has already been cloned (present in the map), return the clone
         if (map.containsKey(node)) return map.get(node);
-
         // Create a new node (clone) with the same value as the original node
         Node copy = new Node(node.val);
-
         // Store the clone in the map to avoid redundant cloning and to handle cycles
         map.put(node, copy);
-
         // Recursively clone all the neighbors of the current node
         for (Node neighbor : node.neighbors) {
             copy.neighbors.add(dfs(neighbor, map));  // Recursively clone neighbors and add them to the copy's neighbor list
         }
-
         // Return the fully cloned node (including its neighbors)
         return copy;
     }
+//    Solution 2
+//        Map<Integer, Node> map = new HashMap<>();
+//    public Node cloneGraph(Node node) {
+//        return node != null ? dfs(node) : null;
+//    }
+//
+//    private Node dfs(Node node) {
+//        if(map.containsKey(node.val)) return map.get(node.val);
+//        var copy = new Node(node.val);
+//        map.put(copy.val, copy);
+//        for(Node neighbor : node.neighbors) {
+//            copy.neighbors.add(dfs(neighbor));
+//        }
+//        return copy;
+//    }
 
 }
 
