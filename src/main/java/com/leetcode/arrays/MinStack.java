@@ -1,46 +1,46 @@
 package com.leetcode.arrays;
 
-import java.util.Objects;
 import java.util.Stack;
 
 class MinStack {
 
 //	https://leetcode.com/problems/min-stack/
-	Stack<Integer> stack;
-	Stack<Integer> min;
+
+	// 'stack' is used to store the actual values pushed into the MinStack.
+	private final Stack<Integer> stack;
+	// 'minStack' is used to store the minimum values in 'stack'.
+	private final Stack<Integer> minStack;
+
+	//	Time Complexity O(1) in all methods
+//	Space Complexity: O(n)
 	public MinStack() {
 		stack = new Stack<>();
-		min = new Stack<>();
+		minStack = new Stack<>();
 	}
 
 	public void push(int val) {
-		if(min.isEmpty())
-			min.push(val);
-		else if (min.peek() >= val) {
-			min.push(val);
-		}
-
 		stack.push(val);
+
+		// Only push to minStack if the new value is less than or equal to the current minimum.
+		if (minStack.isEmpty() || val <= minStack.peek())
+			minStack.push(val);
 	}
 
 	public void pop() {
-		if(!stack.isEmpty()){
-			var val = stack.pop();
-			if(!min.isEmpty() && Objects.equals(min.peek(), val)){
-				min.pop();
-			}
-		}
+		// When popping, check if the popped value is the current minimum.
+		if (stack.peek().equals(minStack.peek()))
+			minStack.pop(); // Pop from minStack only if it's the minimum value.
+		stack.pop(); // Always pop from the main stack.
 	}
 
 	public int top() {
-		return stack.peek();
+		return stack.peek(); // Return the top of the main stack.
 	}
 
 	public int getMin() {
-		if(!min.isEmpty())
-			return min.peek();
-		return 0;
+		return minStack.peek(); // Return the top of the min stack, the current minimum.
 	}
+
 }
 
 
