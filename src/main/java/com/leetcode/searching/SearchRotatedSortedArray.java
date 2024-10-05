@@ -3,10 +3,8 @@ package com.leetcode.searching;
 public class SearchRotatedSortedArray {
 //    https://leetcode.com/problems/search-in-rotated-sorted-array/
 
-    public static void main(String[] args) {
-        search(new int[]{5, 1, 3}, 3);
-    }
-
+//      Time Complexity O(logN)
+//      Space Complexity O(1)
     public static int search(int[] nums, int target) {
         int left = 0, right = nums.length - 1; // Initialize the left and right pointers
 
