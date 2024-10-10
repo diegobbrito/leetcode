@@ -1,7 +1,7 @@
 package com.leetcode.trees;
 
 public class DeleteNodeBST {
-//	https://leetcode.com/problems/delete-node-in-a-bst/description/
+//	https://leetcode.com/problems/delete-node-in-a-bst/
 
 	public TreeNode deleteNode(TreeNode root, int key) {
 		if(root == null) return null;

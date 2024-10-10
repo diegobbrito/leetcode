@@ -1,6 +1,8 @@
 package com.leetcode.linkedlist;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
 
 public class NumberStudentsUnableEatLunch {
 //	https://leetcode.com/problems/number-of-students-unable-to-eat-lunch/description/
