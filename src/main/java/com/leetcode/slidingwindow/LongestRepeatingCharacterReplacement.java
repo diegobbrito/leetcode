@@ -5,6 +5,10 @@ import java.util.Map;
 
 public class LongestRepeatingCharacterReplacement {
     //    https://leetcode.com/problems/longest-repeating-character-replacement/
+
+    //      Time complexity: O(n)
+//      Space complexity: O(m)
+//    Where n is the length of the string and m is the total number of unique characters in the string.
     public int characterReplacement(String s, int k) {
         int left = 0;
         int result = 0;
