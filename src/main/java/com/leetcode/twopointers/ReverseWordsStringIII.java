@@ -1,20 +1,21 @@
 package com.leetcode.twopointers;
 
 public class ReverseWordsStringIII {
+
     private static void reverse(char[] words, int left, int right) {
-        char[] newWords = new char[right - left + 1];
-        int index = 0;
-        for (int i = right - 1; i >= left; i--) {
-            newWords[index++] = words[i];
-        }
-        index = 0;
-        for (int i = left; i < right; i++) {
-            words[i] = newWords[index++];
+        int l = left;
+        int r = right;
+        while (l < r) {
+            char temp = words[l];
+            words[l] = words[r];
+            words[r] = temp;
+            l++;
+            r--;
         }
     }
 
     //Time Complexity: O(n)
-//Space Complexity: O(n)
+    //Space Complexity: O(n)
     public String reverseWords(String s) {
 
         int left = 0;
@@ -22,10 +23,10 @@ public class ReverseWordsStringIII {
         int size = s.length();
         for (int right = 0; right < size; right++) {
             if (words[right] == ' ') {
-                reverse(words, left, right);
+                reverse(words, left, right - 1);
                 left = right + 1;
             } else if (right == size - 1) {
-                reverse(words, left, right + 1);
+                reverse(words, left, right);
             }
         }
         return new String(words);
