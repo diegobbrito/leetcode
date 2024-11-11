@@ -2,33 +2,33 @@ package com.leetcode.twopointers;
 
 public class ReverseWordsStringIII {
 
-    private static void reverse(char[] words, int left, int right) {
-        int l = left;
-        int r = right;
-        while (l < r) {
-            char temp = words[l];
-            words[l] = words[r];
-            words[r] = temp;
-            l++;
-            r--;
-        }
-    }
+//    https://leetcode.com/problems/reverse-words-in-a-string-iii/
 
     //Time Complexity: O(n)
     //Space Complexity: O(n)
     public String reverseWords(String s) {
-
-        int left = 0;
         char[] words = s.toCharArray();
+        int left = 0;
+        int right = 0;
         int size = s.length();
-        for (int right = 0; right < size; right++) {
+        while (right < size) {
             if (words[right] == ' ') {
                 reverse(words, left, right - 1);
                 left = right + 1;
-            } else if (right == size - 1) {
-                reverse(words, left, right);
             }
+            right++;
         }
+        reverse(words, left, right - 1);
         return new String(words);
     }
+
+    private static void reverse(char[] words, int l, int r) {
+        while (l < r) {
+            char temp = words[l];
+            words[l++] = words[r];
+            words[r--] = temp;
+        }
+    }
+
+
 }
