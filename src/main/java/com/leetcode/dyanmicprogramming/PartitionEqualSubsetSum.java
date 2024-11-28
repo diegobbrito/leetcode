@@ -4,26 +4,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class PartitionEqualSubsetSum {
-    public static boolean canPartition2(int[] nums) {
-        int sum = 0;
-        for (int num : nums)
-            sum += num;
-        if (sum % 2 != 0) return false;
-        int target = sum / 2;
-        Set<Integer> dp = new HashSet<>();
-        dp.add(0);
-
-        for (int num : nums) {
-            Set<Integer> nextDp = new HashSet<>();
-            for (int t : dp) {
-                if (t + num == target) return true;
-                nextDp.add(t + num);
-                nextDp.add(t);
-            }
-            dp = nextDp;
-        }
-        return dp.contains(target);
-    }
 
     //    https://leetcode.com/problems/partition-equal-subset-sum/
 //    Time Complexity: O(n * target)
@@ -52,5 +32,28 @@ public class PartitionEqualSubsetSum {
         // Return true if we can form the target sum
         return dp[target];
     }
+
+    public boolean canPartition2(int[] nums) {
+        int sum = 0;
+        for (int num : nums)
+            sum += num;
+        if (sum % 2 != 0) return false;
+        int target = sum / 2;
+        Set<Integer> dp = new HashSet<>();
+        dp.add(0);
+
+        for (int num : nums) {
+            Set<Integer> nextDp = new HashSet<>();
+            for (int t : dp) {
+                if (t + num == target) return true;
+                nextDp.add(t + num);
+                nextDp.add(t);
+            }
+            dp = nextDp;
+        }
+        return dp.contains(target);
+    }
+
+
 
 }
