@@ -1,5 +1,8 @@
 package com.leetcode.slidingwindow;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class ContainsDuplicateII{
     // https://leetcode.com/problems/contains-duplicate-ii/
     public boolean containsNearbyDuplicate(int[] nums, int k) {

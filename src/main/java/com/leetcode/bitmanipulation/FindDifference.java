@@ -1,5 +1,8 @@
 package com.leetcode.bitmanipulation;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class FindDifference {
     //https://leetcode.com/problems/find-the-difference/
     // Map Solution
