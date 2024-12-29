@@ -6,7 +6,8 @@ import java.util.Set;
 public class HappyNumber {
 //    https://leetcode.com/problems/happy-number/
 
-    //   Time complexity: O(log n)
+    //    HashSet to store the numbers that have been seen before.
+//   Time complexity: O(log n)
 //   Space complexity: O(log n)
     public boolean isHappy(int n) {
         Set<Integer> seen = new HashSet<>();
@@ -18,7 +19,8 @@ public class HappyNumber {
         return true;
     }
 
-    //    Time complexity: O(log n)
+    //    Floyd's cycle detection algorithm is a pointer algorithm that uses two pointers, which move at different speeds.
+//    Time complexity: O(log n)
 //    Space complexity: O(1)
     public boolean isHappySlowAndFast(int n) {
         int slow = n, fast = sumOfSquares(n);
