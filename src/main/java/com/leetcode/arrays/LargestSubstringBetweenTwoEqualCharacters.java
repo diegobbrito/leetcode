@@ -9,7 +9,7 @@ public class LargestSubstringBetweenTwoEqualCharacters {
     //    https://leetcode.com/problems/largest-substring-between-two-equal-characters
 //    Two pass solution
 //    Time complexity: O(n)
-//    Space complexity: O(n)
+//    Space complexity: O(1) since we have at most 26 different characters.
     public int maxLengthBetweenEqualCharacters(String s) {
         Map<Character, List<Integer>> map = new HashMap<>();
 
@@ -32,7 +32,7 @@ public class LargestSubstringBetweenTwoEqualCharacters {
 
     // One pass solution
     //    Time complexity: O(n)
-    //    Space complexity: O(n)
+    //    Space complexity: O(1) since we have at most 26 different characters.
 
     public int maxLengthBetweenEqualCharactersOptimize(String s) {
         Map<Character, Integer> map = new HashMap<>();
@@ -48,13 +48,13 @@ public class LargestSubstringBetweenTwoEqualCharacters {
     }
 
     //    Time complexity: O(n)
-    //    Space complexity: O(1)
+    //    Space complexity: O(1) since we have at most 26 different characters.
     public int maxLengthBetweenEqualCharactersOptimizeWithArray(String s) {
         int result = -1;
         int[] arr = new int[26];
         int size = s.length();
         for (int i = 0; i < size; i++) {
-            int idx = s.charAt(i) - 'a'; // 'a' - 'a' = 0, 'b' - 'a' = 1, 'c' - 'a' = 2, ...
+            int idx = s.charAt(i) - 'a'; // 'a' - 'a' = 0, 'b' - 'a' = 1
             if (arr[idx] == 0) // 0 means not visited
                 arr[idx] = i + 1; // add index + 1
             else
