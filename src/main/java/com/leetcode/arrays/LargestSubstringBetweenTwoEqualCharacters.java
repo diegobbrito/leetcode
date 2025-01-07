@@ -47,4 +47,19 @@ public class LargestSubstringBetweenTwoEqualCharacters {
         return result;
     }
 
+    //    Time complexity: O(n)
+    //    Space complexity: O(1)
+    public int maxLengthBetweenEqualCharactersOptimizeWithArray(String s) {
+        int result = -1;
+        int[] arr = new int[26];
+        int size = s.length();
+        for (int i = 0; i < size; i++) {
+            int idx = s.charAt(i) - 'a'; // 'a' - 'a' = 0, 'b' - 'a' = 1, 'c' - 'a' = 2, ...
+            if (arr[idx] == 0) // 0 means not visited
+                arr[idx] = i + 1; // add index + 1
+            else
+                result = Math.max(result, i - arr[idx]); // calculate the difference between current index and previous index
+        }
+        return result;
+    }
 }
