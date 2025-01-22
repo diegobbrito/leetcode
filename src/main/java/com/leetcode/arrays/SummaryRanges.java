@@ -29,4 +29,21 @@ public class SummaryRanges {
         return result;
     }
 
+    //    Time complexity: O(n), where n is the number of elements in the input array.
+//    Space complexity: O(n), where n is the number of elements in the input array.
+    public List<String> summaryRangesWithFor(int[] nums) {
+        List<String> result = new ArrayList<>();
+        String concat = "->";
+        for (int i = 0, size = nums.length; i < size; i++) {
+            int start = i;
+            while (i < size - 1 && nums[i + 1] == nums[i] + 1)
+                i++;
+            if (start == i)
+                result.add(String.valueOf(nums[i]));
+            else
+                result.add(String.valueOf(nums[start]).concat(concat).concat(String.valueOf(nums[i])));
+        }
+        return result;
+    }
+
 }
