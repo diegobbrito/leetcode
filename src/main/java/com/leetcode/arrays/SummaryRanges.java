@@ -11,25 +11,22 @@ public class SummaryRanges {
     public List<String> summaryRanges(int[] nums) {
         List<String> result = new ArrayList<>();
 
-        int index = 0;
+        int end = 0;
         int size = nums.length;
         String concat = "->";
-        while (index < size) {
-            int start = index;
-            int end = index;
-            while (end < size - 1) {
-                if (nums[end + 1] != nums[end] + 1) {
-                    break;
-                }
+        while (end < size) {
+            int start = end;
+            while (end < size - 1 && nums[end + 1] == nums[end] + 1) {
                 end++;
             }
-            if (start == end) {
-                result.add(String.valueOf(nums[index]));
-            } else {
+            if (start == end)
+                result.add(String.valueOf(nums[end]));
+            else
                 result.add(String.valueOf(nums[start]).concat(concat).concat(String.valueOf(nums[end])));
-            }
-            index = end + 1;
+
+            end++;
         }
         return result;
     }
+
 }
