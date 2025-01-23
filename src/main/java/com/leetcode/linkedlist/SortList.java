@@ -6,20 +6,12 @@ public class SortList {
 //    Time complexity: O(nlogn), where n is the number of elements in the input list.
 //    Space complexity: O(logn), where n is the number of elements in the input list.
     public ListNode sortList(ListNode head) {
-
         if (head == null || head.next == null) {
             return head;
         }
-
-        var left = head;
-        var right = getMid(head);
-        var temp = right.next;
-        right.next = null;
-        right = temp;
-
-        left = sortList(left);
-        right = sortList(right);
-
+        var mid = getMid(head);
+        var left = sortList(head);
+        var right = sortList(mid);
         return merge(left, right);
     }
 
@@ -30,7 +22,9 @@ public class SortList {
             slow = slow.next;
             fast = fast.next.next;
         }
-        return slow;
+        fast = slow.next;
+        slow.next = null;
+        return fast;
     }
 
     private ListNode merge(ListNode left, ListNode right) {
@@ -54,5 +48,41 @@ public class SortList {
             tail.next = right;
         }
         return dummy.next;
+    }
+}
+
+class Solution {
+    public ListNode sortList(ListNode head) {
+        return quickSort(head, null);
+    }
+
+    private ListNode quickSort(ListNode head, ListNode stop) {
+        if (head == null || head.next == null || head == stop || head.next == stop) {
+            return head;
+        }
+        ListNode lowHead = head;
+        ListNode prev = head;
+        ListNode tail = prev.next;
+        boolean isSorted = true;
+        while (tail != stop) {
+            isSorted = isSorted && prev.val <= tail.val;
+            if (tail.val < head.val) {
+                prev.next = tail.next;
+                tail.next = lowHead;
+                lowHead = tail;
+            } else {
+                prev = prev.next;
+            }
+            tail = prev.next;
+        }
+        if (isSorted) {
+            return head;
+        }
+
+        ListNode result = quickSort(lowHead, head);
+
+        head.next = quickSort(head.next, stop);
+
+        return result;
     }
 }
