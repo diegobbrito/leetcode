@@ -18,5 +18,16 @@ public class HIndex {
         return result;
     }
 
+    //    Time complexity: O(nlogn), where n is the number of elements in the input array.
+//    Space complexity: O(1)
+    public int hIndex2(int[] citations) {
+        Arrays.sort(citations);
+        for (int i = 0; i < citations.length; i++) {
+            if (citations[i] >= citations.length - i) { // if the number of papers that have at least citations[i] citations is greater than or equal to citations[i]
+                return citations.length - i; // return the h-index
+            }
+        }
+        return 0;
+    }
 
 }
