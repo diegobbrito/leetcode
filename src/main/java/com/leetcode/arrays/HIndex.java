@@ -30,4 +30,25 @@ public class HIndex {
         return 0;
     }
 
+    //    Time complexity: O(n), where n is the number of elements in the input array.
+//    Space complexity: O(n)
+    public int hIndexOptimize(int[] citations) {
+        int n = citations.length;
+        int[] freq = new int[n + 1]; // freq[i] is the number of papers that have i citations
+
+        for (int c : citations) {
+            freq[Math.min(n, c)]++; // if the citation is greater than n, then it is counted as n
+        }
+
+        int c = 0;
+
+        for (int h = n; h >= 0; h--) {
+            c += freq[h]; // c is the number of papers that have at least i citations
+            if (c >= h) // if the number of papers that have at least i citations is greater than or equal to i
+                return h; // return the h-index
+        }
+
+        return 0;
+    }
+
 }
