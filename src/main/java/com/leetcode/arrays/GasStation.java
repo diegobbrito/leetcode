@@ -70,4 +70,23 @@ public class GasStation {
         return totalGas >= 0 ? result : -1;
     }
 
+    //    Two pointers solution.
+//    Time complexity: O(n), where n is the number of elements in the input list.
+//    Space complexity: O(1).
+    public int canCompleteCircuit4(int[] gas, int[] cost) {
+        int n = gas.length;
+        int start = n - 1, end = 0;
+        int tank = gas[start] - cost[start];
+        while (start > end) {
+            if (tank < 0) {
+                start--;
+                tank += gas[start] - cost[start];
+            } else {
+                tank += gas[end] - cost[end];
+                end++;
+            }
+        }
+        return tank >= 0 ? start : -1;
+    }
+
 }
