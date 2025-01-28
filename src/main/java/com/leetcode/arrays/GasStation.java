@@ -53,4 +53,21 @@ public class GasStation {
         return result;
     }
 
+    //    Greedy solution without extra space
+//    Time complexity: O(n), where n is the number of elements in the input list.
+//    Space complexity: O(1).
+    public int canCompleteCircuit3(int[] gas, int[] cost) {
+        int currGas = 0, totalGas = 0, result = 0;
+        for (int i = 0, size = gas.length; i < size; i++) {
+            currGas += gas[i] - cost[i]; // calculate the current gas.
+            if (currGas < 0) { // if the current gas is negative, then update the start point.
+                totalGas += currGas; // add the current gas to the total gas.
+                currGas = 0; // reset the current gas.
+                result = i + 1; // update the start point.
+            }
+        }
+        totalGas += currGas;
+        return totalGas >= 0 ? result : -1;
+    }
+
 }
