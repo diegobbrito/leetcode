@@ -4,7 +4,7 @@ public class SurroundedRegions {
 
     // https://leetcode.com/problems/surrounded-regions/
     // Time complexity: O(m * n)
-    // Space complexity: O(1)
+    // Space complexity: O(m * n)
     public void solve(char[][] board) {
 
         int row = board.length;
