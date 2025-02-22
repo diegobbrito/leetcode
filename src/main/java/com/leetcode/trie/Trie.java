@@ -83,3 +83,57 @@ class TrieNode {
     // Boolean to mark if the node represents the end of a word
     boolean word = false;
 }
+
+class Trie2 {
+
+    TrieNode root;
+
+    public Trie2() {
+        root = new TrieNode();
+    }
+
+    public void insert(String word) {
+        var cur = root;
+
+        for (char c : word.toCharArray()) {
+            int idx = c - 'a';
+            if (cur.children[idx] == null) {
+                cur.children[idx] = new TrieNode();
+            }
+            cur = cur.children[idx];
+        }
+        cur.isEnd = true;
+
+    }
+
+    public boolean search(String word) {
+        var cur = root;
+
+        for (char c : word.toCharArray()) {
+            int idx = c - 'a';
+            if (cur.children[idx] == null) {
+                return false;
+            }
+            cur = cur.children[idx];
+        }
+        return cur.isEnd;
+    }
+
+    public boolean startsWith(String prefix) {
+        var cur = root;
+
+        for (char c : prefix.toCharArray()) {
+            int idx = c - 'a';
+            if (cur.children[idx] == null) {
+                return false;
+            }
+            cur = cur.children[idx];
+        }
+        return true;
+    }
+
+    static class TrieNode {
+        TrieNode[] children = new TrieNode[26];
+        boolean isEnd = false;
+    }
+}
