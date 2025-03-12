@@ -1,6 +1,8 @@
 package com.leetcode.arrays;
 
-public class LemonadeChange {
+import java.util.Arrays;
+
+public class BuyTwoChocolates {
 
     //    https://leetcode.com/problems/buy-two-chocolates/
 
@@ -21,7 +23,7 @@ public class LemonadeChange {
 //    Time complexity: O(n)
 //    Space complexity: O(1).
 
-    public int buyChoco(int[] prices, int money) {
+    public int buyChocoOptimiza(int[] prices, int money) {
 
         int first = Integer.MAX_VALUE;
         int second = Integer.MAX_VALUE;
