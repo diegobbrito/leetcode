@@ -16,7 +16,7 @@ public class CountTotalNumberColoredCells {
 
     // Time Complexity O(1)
     // Space Complexity O(1)
-    public long coloredCells(int n) {
+    public long coloredCells2(int n) {
         long sum = 2L * (n -1) * n;
         return 1L + sum;
     }
