@@ -20,6 +20,9 @@ public class ValidSudoku {
         System.out.println(isValidSudoku(board));
     }
 
+
+    // Time complexity: O(1)
+    // Space complexity: O(1)
     public static boolean isValidSudoku(char[][] board) {
         Set<String> set = new HashSet<>();
         for (int i = 0; i < 9; i++) {
