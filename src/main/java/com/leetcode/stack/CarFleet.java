@@ -17,7 +17,7 @@ public class CarFleet {
             pair[i][1] = speed[i];
         }
 
-        Arrays.sort(pair, (a, b) -> Integer.compare(b[0], a[0]));
+        Arrays.sort(pair, (a, b) -> b[0] - a[0]);
 
         Stack<Double> stack = new Stack<>();
         for (int[] p : pair) {
