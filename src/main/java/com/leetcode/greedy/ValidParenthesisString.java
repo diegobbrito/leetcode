@@ -1,0 +1,32 @@
+package com.leetcode.greedy;
+
+public class ValidParenthesisString {
+
+    // https://leetcode.com/problems/valid-parenthesis-string/
+    // Time complexity: O(n)
+    // Space complexity: O(1)
+
+    public boolean checkValidString(String s) {
+        int leftMin = 0, leftMax = 0;
+
+        for (char c : s.toCharArray()) {
+            if (c == '(') {
+                leftMin++;
+                leftMax++;
+            } else if (c == ')') {
+                leftMin--;
+                leftMax--;
+            } else {
+                leftMin--;
+                leftMax++;
+            }
+            if (leftMax < 0) {
+                return false;
+            }
+            if (leftMin < 0) {
+                leftMin = 0;
+            }
+        }
+        return leftMin == 0;
+    }
+}
