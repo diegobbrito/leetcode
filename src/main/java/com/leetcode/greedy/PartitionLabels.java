@@ -1,7 +1,12 @@
 package com.leetcode.greedy;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class PartitionLabels {
-    
+
     //    https://leetcode.com/problems/partition-labels/
     //    Time Complexity O(n)
     //    Memory Complexity O(m)
