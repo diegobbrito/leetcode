@@ -13,7 +13,6 @@ public class PartitionLabels {
     
     public List<Integer> partitionLabels(String s) {
         Map<Character, Integer> lastIndex = new HashMap<>();
-        
         for (int i = 0; i < s.length(); i++) {
             lastIndex.put(s.charAt(i), i);
         }
