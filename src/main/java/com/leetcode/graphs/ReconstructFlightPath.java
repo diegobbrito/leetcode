@@ -1,15 +1,13 @@
 package com.leetcode.graphs;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ReconstructFlightPath {
 
     // https://leetcode.com/problems/reconstruct-itinerary/
     // Time complexity: O(n log n)
     // Space complexity: O(n)
+    //Where N is the number of tickets (edges)
     public List<String> findItinerary(List<List<String>> tickets) {
         Map<String, PriorityQueue<String>> adj = new HashMap<>();
         for (List<String> ticket : tickets) {
