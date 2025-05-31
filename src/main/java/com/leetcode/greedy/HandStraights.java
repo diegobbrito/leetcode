@@ -1,5 +1,8 @@
 package com.leetcode.greedy;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class HandStraights {
 //    https://leetcode.com/problems/hand-of-straights/
 
@@ -20,7 +23,8 @@ public class HandStraights {
             while (start <= num) {
                 while (count.getOrDefault(start, 0) > 0) {
                     for (int i = start; i < start + groupSize; i++) {
-                        if (count.getOrDefault(i, 0) == 0) return false;
+                        if (count.getOrDefault(i, 0) == 0)
+                            return false;
                         count.put(i, count.get(i) - 1);
                     }
                 }
