@@ -5,8 +5,9 @@ public class FindIndexFirstOccurrenceString {
 public static void main(String[] args) {
 	System.out.println(strStr("mississippi","pi"));
 }
-	public static int strStr(String haystack, String needle) {
-
+	// Time complexity: O(n*m) n is the size of haystack and m is the size of needle
+    // Space complexity: O(1)
+    public static int strStr(String haystack, String needle) {
 		int needleSize = needle.length();
 		int hayStackSize = haystack.length();
 		if(hayStackSize < needleSize) return -1;
@@ -33,6 +34,9 @@ public static void main(String[] args) {
 		return -1;
 	}
 
+    // Using built-in function
+    // Time complexity: O(n*m) n is the size of haystack and m is the size of needle
+    // Space complexity: O(1)
 	public int strStr2(String haystack, String needle) {
 		return haystack.indexOf(needle);
 	}
