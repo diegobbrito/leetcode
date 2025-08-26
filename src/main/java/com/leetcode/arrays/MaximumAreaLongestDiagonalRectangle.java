@@ -3,6 +3,9 @@ package com.leetcode.arrays;
 public class MaximumAreaLongestDiagonalRectangle {
 //    https://leetcode.com/problems/maximum-area-of-longest-diagonal-rectangle/
 
+    //  Time complexity: O(n)
+    //  Space complexity: O(1)
+
     public int areaOfMaxDiagonal(int[][] dimensions) {
         int maxArea = 0;
         int maxDiagonal = 0;
