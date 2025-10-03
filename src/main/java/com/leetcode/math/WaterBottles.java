@@ -19,4 +19,12 @@ public class WaterBottles {
         }
         return result;
     }
+
+    // Mathematical approach
+    // Time complexity: O(1)
+    // Space complexity: O(1)
+
+    public int numWaterBottles2(int numBottles, int numExchange) {
+        return numBottles + (numBottles - 1) / (numExchange - 1);
+    }
 }
