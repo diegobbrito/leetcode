@@ -11,7 +11,7 @@ public class WaterBottles {
         int result = numBottles;
         int carry = 0;
 
-        while(numBottles > 0){
+        while(numBottles >= numExchange){
             carry = numBottles % numExchange;
             numBottles = numBottles / numExchange;
             result += numBottles;
