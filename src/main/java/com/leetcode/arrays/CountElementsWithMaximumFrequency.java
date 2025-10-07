@@ -22,6 +22,7 @@ public class CountElementsWithMaximumFrequency {
         for(Map.Entry<Integer, Integer> entry : map.entrySet()){
             pq.offer(new int[]{entry.getKey(), entry.getValue()});
         }
+        if (pq.isEmpty()) return 0;
         int maxFreq = pq.peek()[1];
         int count = 0;
         while(!pq.isEmpty() && pq.peek()[1] == maxFreq) {
