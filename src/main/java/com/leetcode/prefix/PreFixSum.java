@@ -1,4 +1,4 @@
-package com.leetcode.arrays;
+package com.leetcode.prefix;
 
 public class PreFixSum {
     int[] prefix;
