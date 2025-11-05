@@ -18,7 +18,7 @@ public class FindXSumAllKLongSubarraysI {
         for(int r = 0, l = 0, i = 0; r < n ; r++){
             map.put(nums[r], map.getOrDefault(nums[r], 0) + 1);
             if(r >= k - 1){
-                int sum = getSum(nums, map, x, l, r);
+                int sum = getSum(map, x);
                 result[i++] = sum;
                 map.put(nums[l], map.get(nums[l++]) - 1);
             }
@@ -27,20 +27,12 @@ public class FindXSumAllKLongSubarraysI {
         return result;
     }
 
-    private int getSum(int[] nums, Map<Integer,Integer> map, int x,int left,int right){
-        if(x >= map.size() ){
-            int sum = 0;
-            for(int i = left; i <= right; i++){
-                sum += nums[i];
-            }
-            return sum;
-        }
+    private int getSum(Map<Integer,Integer> map, int x){
         PriorityQueue <int[]> queue = new PriorityQueue<>((a, b) -> {
             if (b[1] != a[1]) {
                 return Integer.compare(b[1], a[1]);
-            } else {
-                return Integer.compare(b[0], a[0]);
             }
+            return Integer.compare(b[0], a[0]);
         });
         for(Map.Entry<Integer,Integer> entry : map.entrySet()){
             queue.add(new int[]{entry.getKey(), entry.getValue()});
