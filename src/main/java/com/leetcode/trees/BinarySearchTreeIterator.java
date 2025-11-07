@@ -10,7 +10,7 @@ public class BinarySearchTreeIterator {
 
     //Time complexity: O(n)
     //Space complexity: O(n)
-    class BSTIterator {
+    static class BSTIterator {
 
         Queue<Integer> queue;
 
@@ -38,7 +38,7 @@ public class BinarySearchTreeIterator {
 
     //Time complexity: O(h) in balanced tree, O(n) in worst case
     //Space complexity: O(h) in balanced tree, O(n) in worst case
-    class BSTIteratorStack {
+    static class BSTIteratorStack {
 
         Stack<TreeNode> stack;
 
