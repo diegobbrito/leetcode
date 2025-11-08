@@ -11,15 +11,11 @@ public class BestTimeBuySellStock {
 		for(int i = 0; i < length - 1; i++){
 			int buy = prices[i];
 			int max = prices[i];
-			for(int j = i + 1; j < length; j++){
-				if(prices[j] > max){
+			for(int j = i + 1; j < length; j++)
+				if(prices[j] > max)
 					max = prices[j];
-				}
-			}
-			if(sell < max - buy){
+			if(sell < max - buy)
 				sell = max - buy;
-			}
-
 		}
 		return sell;
 	}

@@ -7,7 +7,8 @@ public class MinimumDifferenceBetweenHighestLowestKScores {
 //    Time Complexity - O(nlogn)
 //    Space Complexity - O(1)
     public int minimumDifference(int[] nums, int k) {
-        if (k == 1) return 0;
+        if (k == 1)
+            return 0;
         Arrays.sort(nums);
         int min = Integer.MAX_VALUE;
         for (int left = 0, right = k - 1, size = nums.length; right < size; left++, right++) {
