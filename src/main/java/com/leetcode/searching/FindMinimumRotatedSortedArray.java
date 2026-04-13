@@ -1,5 +1,8 @@
 package com.leetcode.searching;
 
+
+//      Time Complexity O(n)
+//      Space Complexity O(1)
 public class FindMinimumRotatedSortedArray {
     //    https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/
     public int findMin(int[] nums) {
@@ -14,6 +17,9 @@ public class FindMinimumRotatedSortedArray {
         return nums[0];
     }
 
+
+//      Time Complexity O(logN)
+//      Space Complexity O(1)
     public int findMin2(int[] nums) {
         // Initialize the result with the first element of the array
         int result = nums[0];
