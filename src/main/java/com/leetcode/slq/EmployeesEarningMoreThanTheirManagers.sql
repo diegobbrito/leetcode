@@ -1,4 +1,4 @@
-#https://leetcode.com/problems/employees-earning-more-than-their-managers/
+-- https://leetcode.com/problems/employees-earning-more-than-their-managers/
 
 select name as Employee from Employee e where e.salary > (select salary from Employee where id = e.managerId);
 

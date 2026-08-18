@@ -1,4 +1,4 @@
-#https://leetcode.com/problems/duplicate-emails/
+-- https://leetcode.com/problems/duplicate-emails/
 
 SELECT email as Email
 FROM Person
