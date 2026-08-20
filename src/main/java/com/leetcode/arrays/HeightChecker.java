@@ -5,6 +5,9 @@ import java.util.List;
 
 public class HeightChecker {
 
+//    https://neetcode.io/problems/height-checker/
+//    Time Complexity O(n)
+//    Space Complexity O(n)
     public int heightChecker(int[] heights) {
         int[] count = new int[101];
         for (int h : heights) {
