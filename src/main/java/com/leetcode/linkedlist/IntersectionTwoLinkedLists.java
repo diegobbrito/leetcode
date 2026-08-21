@@ -7,7 +7,7 @@ public class IntersectionTwoLinkedLists {
 //    https://leetcode.com/problems/intersection-of-two-linked-lists/
 
     //    Time Complexity O(n * m)
-//    Space Complexity O(1)
+    //    Space Complexity O(1)
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         while (headA != null) {
             var temp = headB;
