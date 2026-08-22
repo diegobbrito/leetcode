@@ -2,10 +2,6 @@ package com.leetcode.arrays;
 
 public class CanPlaceFlowers {
     //    https://leetcode.com/problems/can-place-flowers/
-    public static void main(String[] args) {
-        System.out.println(canPlaceFlowers2(new int[]{1, 0, 0, 1}, 1));
-        canPlaceFlowers(new int[]{1, 0, 0, 0, 0, 1}, 2);
-    }
 
     //    Time Complexity O(n)
     //    Memory Complexity O(1)
