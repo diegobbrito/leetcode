@@ -1,5 +1,8 @@
 package com.leetcode.trees;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class RangeSumBST {
 
     //    https://leetcode.com/problems/range-sum-of-bst/
@@ -30,5 +33,30 @@ public class RangeSumBST {
             return rangeSumBST2(root.right, low, high);
 
         return (root.val + rangeSumBST2(root.left, low, high) + rangeSumBST2(root.right, low, high));
+    }
+
+    public int rangeSumBST3(TreeNode root, int low, int high) {
+        Queue<TreeNode> queue = new LinkedList<>();
+        if(root != null){
+            queue.offer(root);
+        }
+        int result = 0;
+        while(!queue.isEmpty()){
+            int size = queue.size();
+            for(int i = 0; i < size; i++){
+                TreeNode curr = queue.poll();
+                if(curr.val >= low && curr.val <= high){
+                    result += curr.val;
+                }
+                if(curr.left != null){
+                    queue.offer(curr.left);
+                }
+                if(curr.right != null){
+                    queue.offer(curr.right);
+                }
+            }
+        }
+
+        return result;
     }
 }
