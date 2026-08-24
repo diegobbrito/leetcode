@@ -7,21 +7,15 @@ public class SumRootLeafNumbers {
     //Time complexity: O(n), where n is the number of nodes in the tree.
     //We traverse the tree once.
     //Space complexity: O(n), where n is the number of nodes in the tree.
-    int sum;
 
     public int sumNumbers(TreeNode root) {
-        sum = 0;
-        dfs(root, 0);
-        return sum;
+        return dfs(root, 0);
     }
 
-    private void dfs(TreeNode root, int val) {
-        if (root == null) return;
-
-        if (root.left == null && root.right == null) {
-            sum += val + root.val;
-        }
-        dfs(root.left, (val + root.val) * 10);
-        dfs(root.right, (val + root.val) * 10);
+    private int dfs(TreeNode root, int num){
+        if(root == null) return 0;
+        num = num * 10 + root.val;
+        if(root.left == null && root.right == null) return num;
+        return dfs(root.left, num) + dfs(root.right, num);
     }
 }
