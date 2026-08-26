@@ -7,7 +7,7 @@ public class FindWordsThatCanBeFormedCharacters {
 //    https://leetcode.com/problems/find-words-that-can-be-formed-by-characters/
 
     //    Time complexity: O(n + (m * k))
-//    Space complexity: O(1)
+    //    Space complexity: O(1)
     public int countCharacters(String[] words, String chars) {
         Map<Character, Integer> map = new HashMap<>();
         for (char c : chars.toCharArray()) {
@@ -31,7 +31,7 @@ public class FindWordsThatCanBeFormedCharacters {
     }
 
     //    Time complexity: O(n + (m * k))
-//    Space complexity: O(1)
+    //    Space complexity: O(1)
     public int countCharactersArray(String[] words, String chars) {
         int[] base = new int[26];
         for (char c : chars.toCharArray()) {
