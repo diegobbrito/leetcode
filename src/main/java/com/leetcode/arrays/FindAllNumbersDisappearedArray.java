@@ -1,7 +1,9 @@
 package com.leetcode.arrays;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class FindAllNumbersDisappearedArray {
 //	https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/
@@ -60,5 +62,24 @@ public static void main(String[] args) {
 				result.add(i);
 		return result;
 	}
+
+	//Time Complexity: O(n)
+	//Space Complexity: O(n)
+	public List<Integer> findDisappearedNumbers4(int[] nums) {
+		Set<Integer> set = new HashSet<>();
+		for(int num : nums){
+			set.add(num);
+		}
+
+		List<Integer> result = new ArrayList<>();
+		for(int i = 1; i <= nums.length; i++){
+			if(!set.contains(i)){
+				result.add(i);
+			}
+		}
+
+		return result;
+	}
+
 
 }
