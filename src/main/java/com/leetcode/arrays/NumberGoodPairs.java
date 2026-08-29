@@ -22,28 +22,16 @@ public class NumberGoodPairs {
 
 	//	Time Complexity O(n)
 	//	Memory Complexity O(n)
-	public int numIdenticalPairsOptimize(int[] nums) {
-		// Initialize count to track the number of good pairs
-		int count = 0;
-		// HashMap to store the frequency of each number in the array
+	public int numIdenticalPairs2(int[] nums) {
 		Map<Integer, Integer> map = new HashMap<>();
-		// Iterate through each number in the array
-		for (Integer num : nums) {
-			// Check if the number has been seen before
-			if (map.containsKey(num)) {
-				// If it has, add the current frequency of the number to the count
-				// This is because each previous occurrence of this number forms a "good pair" with the current one
-				count += map.get(num);
-
-				// Increment the frequency of the current number in the map by 1
-				map.put(num, map.get(num) + 1);
-			} else {
-				// If it hasn't been seen, add the number to the map with a frequency of 1
-				map.put(num, 1);
-			}
+		int result = 0;
+		for(int num : nums){
+			int freq = map.getOrDefault(num, 0);
+			result += freq;
+			map.put(num, freq + 1);
 		}
-		// Return the total count of good pairs
-		return count;
+
+		return result;
 	}
 
 }
