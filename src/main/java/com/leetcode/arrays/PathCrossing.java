@@ -4,20 +4,21 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class PathCrossing {
-//    https://leetcode.com/problems/path-crossing/
+    //    https://leetcode.com/problems/path-crossing/
 
     //    Time complexity: O(n)
-//    Space complexity: O(n)
+    //    Space complexity: O(n)
     public boolean isPathCrossing(String path) {
         Set<String> set = new HashSet<>();
-        int col = 0, row = 0;
+        int col = 0;
+        int row = 0;
         set.add(col + " " + row);
         for (char ch : path.toCharArray()) {
             switch (ch) {
                 case 'N' -> row++;
                 case 'S' -> row--;
                 case 'E' -> col++;
-                case 'W' -> col--;
+                default -> col--;
             }
             if (!set.add(col + " " + row)) {
                 return true;
