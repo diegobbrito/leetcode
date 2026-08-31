@@ -6,9 +6,9 @@ import java.util.PriorityQueue;
 public class MaximumProductDifferenceBetweenTwoPairs {
 
     //    https://leetcode.com/problems/maximum-product-difference-between-two-pairs/
-//    Time Complexity O(nlogn)
-//    Space Complexity O(n)
-//    Priority Queue
+    //    Time Complexity O(nlogn)
+    //    Space Complexity O(n)
+    //    Priority Queue
     public int maxProductDifference(int[] nums) {
         PriorityQueue<Integer> min = new PriorityQueue<>();
         PriorityQueue<Integer> max = new PriorityQueue<>((a, b) -> b - a);
@@ -25,18 +25,33 @@ public class MaximumProductDifferenceBetweenTwoPairs {
 
         return (c * d) - (a * b);
     }
+    //    Priority Queue with fixed size
+    //    Time Complexity O(n)
+    //    Space Complexity O(1)
+    public int maxProductDifference2(int[] nums) {
+        PriorityQueue<Integer> max = new PriorityQueue<>();
+        PriorityQueue<Integer> min = new PriorityQueue<>((a, b) -> b - a);
 
+        for (int num : nums) {
+            min.add(num);
+            max.add(num);
+            if(min.size() > 2) min.poll();
+            if(max.size() > 2) max.poll();
+        }
+        return (max.poll() * max.poll()) - (min.poll() * min.poll());
+    }
+
+    //    Sorting
     //    Time Complexity O(nlogn)
-//    Space Complexity O(n)
-//    Sorting
+    //    Space Complexity O(n)
     public int maxProductDifferenceSorting(int[] nums) {
         Arrays.sort(nums);
         return (nums[nums.length - 1] * nums[nums.length - 2]) - (nums[0] * nums[1]);
     }
 
+    //    Two Maximums and Two Minimums
     //    Time Complexity O(n)
-//    Space Complexity O(1)
-//    Two Maximums and Two Minimums
+    //    Space Complexity O(1)
     public int maxProductDifferenceOptimize(int[] nums) {
         int max1 = 0, max2 = 0;
         int min1 = Integer.MAX_VALUE, min2 = Integer.MAX_VALUE;
