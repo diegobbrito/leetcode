@@ -1,10 +1,10 @@
 package com.leetcode.arrays;
 
 public class SpecialArrayI {
-//    https://leetcode.com/problems/special-array-i/
+    //    https://leetcode.com/problems/special-array-i/
 
     //    Time complexity: O(n)
-//    Space complexity: O(1)
+    //    Space complexity: O(1)
     public boolean isArraySpecial(int[] nums) {
         if (nums.length < 2) return true;
 
