@@ -11,22 +11,20 @@ public class FindMissingRepeatedValues {
     public int[] findMissingAndRepeatedValues(int[][] grid) {
 
         Set<Integer> set = new HashSet<>();
-        int a = 0;
-        int b = 0;
-        int n = grid.length;
 
-        for(int i = 0; i < n; i++){
-            for(int j = 0; j < n; j++){
-                if(!set.add(grid[i][j])){
-                    a = grid[i][j];
+        int n = grid.length;
+        int a = 0;
+        int b = n * n;
+
+        for (int[] ints : grid) {
+            for (int j = 0; j < n; j++) {
+                if (!set.add(ints[j])) {
+                    a = ints[j];
                 }
             }
         }
-        for(int i = 1; i <= n * n; i++){
-            if(!set.contains(i)){
-                b = i;
-                break;
-            }
+        while(set.contains(b)){
+            b--;
         }
 
         return new int[]{a,b};   
