@@ -5,8 +5,8 @@ import java.util.Map;
 
 public class RedistributeCharactersMakeAllStringsEqual {
     //    https://leetcode.com/problems/redistribute-characters-to-make-all-strings-equal
-//    Time complexity: O(n * m)
-//    Space complexity: O(1)
+    //    Time complexity: O(n * m)
+    //    Space complexity: O(1)
     public boolean makeEqual(String[] words) {
         Map<Character, Integer> map = new HashMap<>();
         for (String word : words) {
@@ -21,18 +21,18 @@ public class RedistributeCharactersMakeAllStringsEqual {
         return true;
     }
 
-    //    Time complexity: O(n * m)
-//    Space complexity: O(1)
+    //    Time complexity: O(n) being n the number of characters in all words
+    //    Space complexity: O(1)
     public boolean makeEqualOptimize(String[] words) {
-        int[] arr = new int[26];
+        int[] letters = new int[26];
         for (String word : words) {
-            for (char c : word.toCharArray()) {
-                arr[c - 'a']++;
+            for (int i = 0; i < word.length(); i++) {
+                letters[word.charAt(i) - 'a']++;
             }
         }
         int size = words.length;
         for (int i = 0; i < 26; i++) {
-            if (arr[i] % size != 0)
+            if (letters[i] % size != 0)
                 return false;
         }
         return true;
