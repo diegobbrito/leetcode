@@ -1,7 +1,9 @@
 package com.leetcode.arrays;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class DivideArrayIntoEqualPairs {
 
@@ -18,5 +20,16 @@ public class DivideArrayIntoEqualPairs {
         }
         return true;
 
+    }
+    //    Time complexity: O(n)
+    //    Space complexity: O(n)
+    public boolean divideArray2(int[] nums) {
+        Set<Integer> set = new HashSet<>();
+        for (int num : nums) {
+            if(!set.add(num)){
+                set.remove(num);
+            }
+        }
+        return set.isEmpty();
     }
 }
