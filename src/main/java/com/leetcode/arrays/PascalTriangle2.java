@@ -10,18 +10,18 @@ public class PascalTriangle2 {
 //    Space complexity: O(n2)
 //    Dynamic Programming
     public List<Integer> getRow(int rowIndex) {
-        List<List<Integer>> result = new ArrayList<>();
+        List<List<Integer>> row = new ArrayList<>();
         for (int i = 0; i <= rowIndex; i++) {
             List<Integer> curr = new ArrayList<>();
             for (int j = 0; j <= i; j++) {
                 if (j == 0 || j == i)
                     curr.add(1);
                 else
-                    curr.add(result.get(i - 1).get(j - 1) + result.get(i - 1).get(j));
+                    curr.add(row.get(i - 1).get(j - 1) + row.get(i - 1).get(j));
             }
-            result.add(curr);
+            row.add(curr);
         }
-        return result.get(rowIndex);
+        return row.get(rowIndex);
     }
 
     //Dynamic Programming (Space Optimized)
