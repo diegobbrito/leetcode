@@ -5,6 +5,8 @@ import java.util.Map;
 
 public class RansomNote {
     //    https://leetcode.com/problems/ransom-note/
+    //    Total Time Complexity: O(m+n).
+    //    Space Complexity: O(k)
     public boolean canConstruct(String ransomNote, String magazine) {
         if (ransomNote.length() > magazine.length()) return false;
         Map<Character, Integer> map = new HashMap<>();
@@ -22,7 +24,7 @@ public class RansomNote {
     }
 
     //    Total Time Complexity: O(m+n).
-//    Space Complexity: O(k), where k is the number of unique characters in the magazine.
+    //    Space Complexity: O(k), where k is the number of unique characters in the magazine.
     public boolean canConstruct2(String ransomNote, String magazine) {
         // If the ransom note is longer than the magazine, it's impossible to construct
         // the ransom note from the magazine, so return false immediately.
@@ -52,33 +54,19 @@ public class RansomNote {
         return true;
     }
 
-
     //    Total Time Complexity: O(m+n).
     //    Space Complexity: O(1) since the array size is fixed at 26, regardless of input size.
     public boolean canConstruct3(String ransomNote, String magazine) {
-        // If the ransom note is longer than the magazine, it's impossible to construct
-        // the ransom note from the magazine, so return false immediately.
-        if (ransomNote.length() > magazine.length()) return false;
-
-        // Array to store counts of each character in the magazine.
-        // There are 26 lowercase English letters, so we use an array of size 26.
         int[] charCounts = new int[26];
-
-        // Count each character in the magazine.
         for (char c : magazine.toCharArray()) {
-            charCounts[c - 'a']++; // Increment count at the index corresponding to the character.
+            charCounts[c - 'a']++;
         }
-
-        // Check if we can build the ransom note using characters from the magazine.
         for (char c : ransomNote.toCharArray()) {
-            // If the character count is zero, it means we can't construct the ransom note.
-            if (charCounts[c - 'a'] == 0) return false;
-            charCounts[c - 'a']--; // Decrement the count for the used character.
+            if (charCounts[c - 'a'] == 0)
+                return false;
+            charCounts[c - 'a']--;
         }
-
-        // If all characters in the ransom note have been accounted for, return true.
         return true;
     }
-
 
 }
