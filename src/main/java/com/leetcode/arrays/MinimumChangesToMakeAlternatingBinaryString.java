@@ -2,8 +2,8 @@ package com.leetcode.arrays;
 
 public class MinimumChangesToMakeAlternatingBinaryString {
     //    https://leetcode.com/problems/minimum-changes-to-make-alternating-binary-string/
-//    Time Complexity - O(n)
-//    Space Complexity - O(n)
+    //    Time Complexity - O(n)
+    //    Space Complexity - O(n)
     public int minOperations(String s) {
 
         char z = '0';
@@ -41,24 +41,18 @@ public class MinimumChangesToMakeAlternatingBinaryString {
     }
 
     //    Time Complexity - O(n)
-//    Space Complexity - O(1)
+    //    Space Complexity - O(1)
     public int minOperations2(String s) {
-
-        boolean checkZero = false;
-        int startZero = 0;
-        int startOne = 0;
-
-        for (char c : s.toCharArray()) {
-            if (checkZero) {
-                if (c == '0') startOne++;
-                else startZero++;
-            } else {
-                if (c == '0') startZero++;
-                else startOne++;
-            }
-            checkZero = !checkZero;
+        int one = 0;
+        int zero = 0;
+        char curr = '0';
+        for(char c : s.toCharArray()){
+            if(c == curr)
+                one++;
+            else
+                zero++;
+            curr = curr == '0' ? '1' : '0';
         }
-
-        return Math.min(startZero, startOne);
+        return Math.min(one, zero);
     }
 }
